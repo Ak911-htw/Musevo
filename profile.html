@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile - Musevo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: 'Outfit', sans-serif;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: linear-gradient(to bottom, #330000, transparent);
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .nav-buttons, .icon-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-buttons button, .icon-buttons button {
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+    }
+
+
+    .profile-container {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .cover-image {
+      background: #ccc;
+      height: 150px;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #ddd;
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 3px solid #170000;
+    }
+
+    .username {
+      text-align: center;
+      margin-top: 80px;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .about-box {
+      background-color: #170000;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 60px 0 20px;
+      font-family: 'Aboreto', cursive;
+      font-size: 20px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    .add-work {
+      display: flex;
+      justify-content: center;
+    }
+
+    .add-work button {
+      background-color: #170000;
+      border: none;
+      font-size: 60px;
+      color: #ddd;
+      width: 120px;
+      height: 120px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .best-seller {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .best-seller button {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .similar-artists {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .artist-card {
+      text-align: center;
+    }
+
+    .artist-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #ccc;
+      margin: 0 auto;
+    }
+
+    .artist-name {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .insta-handle {
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    footer {
+      background-color: #170000;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #bbb;
+      margin-top: 60px;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .column {
+      min-width: 140px;
+      text-align: left;
+    }
+
+    .column h4 {
+      font-family: 'Aboreto', cursive;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .column a {
+      display: block;
+      margin: 5px 0;
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .app-button {
+      margin-top: 10px;
+      font-size: 12px;
+      padding: 6px 12px;
+      border: 1px solid white;
+      background: #660000;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .newsletter-btn {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 10px 20px;
+      font-size: 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Aboreto', cursive;
+    }
+
+    .bottom-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+    .bottom-footer a {
+      color: white;
+      margin: 0 4px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .social-icons img {
+      height: 22px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <a href="home.html">
+  <img src="assets/logo.png" alt="Musevo Logo" class = "logo"/>
+</a>
+<div class = "nav-buttons">
+      <button>Explore</button>
+      <button>$ Sell</button>
+      <button>♡ Wish List</button>
+    </div>
+    <div class="icon-buttons">
+      <button>🔔</button>
+      <button>🛒</button>
+      <button>👤</button>
+    </div>
+  </header>
+  <!-- Profile Section -->
+  <div class="profile-container">
+    <div class="cover-image">
+      <div class="profile-pic"></div>
+    </div>
+    <div class="username"><h2 id="profile-name">[user]</h2></div>
+    
+
+    <div class="about-box">
+      <h3>About me</h3>
+    </div>
+
+    <div class="section-title">MY WORK</div>
+    <div class="add-work">
+      <button>+</button>
+    </div>
+
+    <div class="section-title">BEST SELLER</div>
+    <div class="best-seller">
+      <button>START SELLING TO GET A BEST SELLING ART</button>
+    </div>
+
+    <div class="section-title">SIMILAR ARTISTS</div>
+    <div class="similar-artists">
+      <div class="artist-card">
+        <div class="artist-avatar"></div>
+        <div class="artist-name">abcd</div>
+        <div class="insta-handle">@abcd</div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-avatar"></div>
+        <div class="artist-name">abcd</div>
+        <div class="insta-handle">@abcd</div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-avatar"></div>
+        <div class="artist-name">abcd</div>
+        <div class="insta-handle">@abcd</div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-avatar"></div>
+        <div class="artist-name">abcd</div>
+        <div class="insta-handle">@abcd</div>
+      </div>
+      <div class="artist-card">
+        <div class="artist-avatar"></div>
+        <div class="artist-name">abcd</div>
+        <div class="insta-handle">@abcd</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-columns">
+      <div class="column">
+        <h4>Discover</h4>
+        <a href="#">Artists</a>
+        <a href="#">Music</a>
+        <a href="#">Artworks</a>
+        <button class="app-button">GET OUR APP</button>
+      </div>
+      <div class="column">
+        <h4>Sell on Musevo</h4>
+        <a href="#">Start Selling</a>
+        <a href="#">Pricing</a>
+        <a href="#">Challenges</a>
+      </div>
+      <div class="column">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="column">
+        <h4>Support</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+    <div class="bottom-footer">
+      <button class="newsletter-btn">SUBSCRIBE TO OUR NEWSLETTER</button>
+      <p>© 2025 Musevo. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+      <div class="social-icons">
+        <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="assets/youtube.png" alt="YouTube"></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const name = localStorage.getItem('musevoUserName');
+    if (name) {
+      document.getElementById('profile-name').textContent = `${name}`;
+    } else {
+      document.getElementById('profile-name').textContent = "Hi there!";
+    }
+  </script>
+  
+
+</body>
+</html>
