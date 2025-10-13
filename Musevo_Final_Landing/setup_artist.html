@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artist Setup - Musevo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Outfit', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      background-color: #170000;
+      max-width: 800px;
+      margin: 50px auto 80px;
+      padding: 40px 30px 60px;
+      border-radius: 10px;
+    }
+
+    .logo {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: 'Aboreto', cursive;
+      font-size: 22px;
+      margin-bottom: 20px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      font-family: 'Aboreto', cursive;
+      font-size: 16px;
+      margin: 30px 0 15px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .tags, .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 16px;
+      border: 1px solid #fff;
+      border-radius: 20px;
+      font-size: 18px;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .tag:hover,
+    .tag.selected {
+      background-color: #b30000;
+      border-color: #b30000;
+    }
+
+    .note {
+      font-size: 13px;
+      margin-top: 30px;
+      letter-spacing: 1px;
+      color: #ccc;
+    }
+
+    .continue-btn {
+      margin-top: 20px;
+      background-color: #b30000;
+      border: none;
+      padding: 12px 30px;
+      font-size: 14px;
+      font-family: 'Aboreto', cursive;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .continue-btn:hover {
+      background-color: #cc0000;
+    }
+  </style>
+
+  <script>
+    function toggleTag(element) {
+      element.classList.toggle("selected");
+    }
+
+    // Adds a custom tag to the clicked category section
+    function addCustomTag(sectionId) {
+      const tagContainer = document.getElementById(sectionId);
+      const input = prompt("Enter your custom category:");
+
+      if (input && input.trim() !== "") {
+        const newTag = document.createElement("div");
+        newTag.classList.add("tag", "selected");
+        newTag.textContent = input.trim();
+        newTag.onclick = function () {
+          toggleTag(this);
+        };
+        const otherBtn = tagContainer.querySelector(".otherTag");
+        tagContainer.insertBefore(newTag, otherBtn);
+      }
+    }
+
+    function continueToNext() {
+      const selected = document.querySelectorAll(".tag.selected");
+      if (selected.length === 0) {
+        alert("Please select at least one.");
+      } else {
+        window.location.href = "profile.html";
+
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <img src="assets/logo.png" alt="Musevo Logo" class="logo" />
+    <h2>SETUP YOUR MUSEVO ACCOUNT</h2>
+    <p style="letter-spacing: 1px; font-size: 15px;">I AM A...</p>
+
+    <!-- VISUAL ARTIST -->
+    <div class="category">
+      <h3>VISUAL ARTIST</h3>
+      <div class="tags" id="visualArtist">
+        <div class="tag" onclick="toggleTag(this)">Digital Art</div>
+        <div class="tag" onclick="toggleTag(this)">Traditional Art</div>
+        <div class="tag" onclick="toggleTag(this)">Mixed Media</div>
+        <div class="tag" onclick="toggleTag(this)">3D Art</div>
+        <div class="tag" onclick="toggleTag(this)">Illustration</div>
+        <div class="tag" onclick="toggleTag(this)">Concept Art</div>
+        <div class="tag" onclick="toggleTag(this)">Comics</div>
+        <div class="tag" onclick="toggleTag(this)">NFT Art</div>
+        <div class="tag" onclick="toggleTag(this)">Collage Art</div>
+        <div class="tag otherTag" onclick="addCustomTag('visualArtist')">Other +</div>
+      </div>
+    </div>
+
+    <!-- PHOTOGRAPHER / VIDEOGRAPHER -->
+    <div class="category">
+      <h3>PHOTOGRAPHER / VIDEOGRAPHER</h3>
+      <div class="tag-grid" id="photographer">
+        <div class="tag" onclick="toggleTag(this)">Portrait</div>
+        <div class="tag" onclick="toggleTag(this)">Travel</div>
+        <div class="tag" onclick="toggleTag(this)">Cinematic Videography</div>
+        <div class="tag" onclick="toggleTag(this)">Music Videos</div>
+        <div class="tag" onclick="toggleTag(this)">Street</div>
+        <div class="tag" onclick="toggleTag(this)">Editorial/Fashion</div>
+        <div class="tag" onclick="toggleTag(this)">Black and White</div>
+        <div class="tag" onclick="toggleTag(this)">Landscape</div>
+        <div class="tag" onclick="toggleTag(this)">Experimental Shorts</div>
+        <div class="tag otherTag" onclick="addCustomTag('photographer')">Other +</div>
+      </div>
+    </div>
+
+    <!-- FASHION DESIGNER -->
+    <div class="category">
+      <h3>FASHION DESIGNER</h3>
+      <div class="tag-grid" id="fashionDesigner">
+        <div class="tag" onclick="toggleTag(this)">Street Wear</div>
+        <div class="tag" onclick="toggleTag(this)">High Fashion</div>
+        <div class="tag" onclick="toggleTag(this)">Tech Wear</div>
+        <div class="tag" onclick="toggleTag(this)">Embroidery</div>
+        <div class="tag" onclick="toggleTag(this)">Pattern Design</div>
+        <div class="tag" onclick="toggleTag(this)">Traditional</div>
+        <div class="tag" onclick="toggleTag(this)">Experimental</div>
+        <div class="tag" onclick="toggleTag(this)">Graphic Tees</div>
+        <div class="tag" onclick="toggleTag(this)">Sustainable Fashion</div>
+        <div class="tag otherTag" onclick="addCustomTag('fashionDesigner')">Other +</div>
+      </div>
+    </div>
+
+    <!-- CALLIGRAPHY / TYPOGRAPHY -->
+    <div class="category">
+      <h3>CALLIGRAPHY / TYPOGRAPHY</h3>
+      <div class="tag-grid" id="calligraphy">
+        <div class="tag" onclick="toggleTag(this)">Modern Script</div>
+        <div class="tag" onclick="toggleTag(this)">Sans Serif</div>
+        <div class="tag" onclick="toggleTag(this)">Graffiti</div>
+        <div class="tag" onclick="toggleTag(this)">3D Typography</div>
+        <div class="tag" onclick="toggleTag(this)">Brush Lettering</div>
+        <div class="tag" onclick="toggleTag(this)">Animated Typography</div>
+        <div class="tag" onclick="toggleTag(this)">Logo Calligraphy</div>
+        <div class="tag" onclick="toggleTag(this)">Gothic/Blackletter</div>
+        <div class="tag otherTag" onclick="addCustomTag('calligraphy')">Other +</div>
+      </div>
+    </div>
+
+    <!-- MUSICIAN -->
+    <div class="category">
+      <h3>MUSICIAN</h3>
+      <div class="tag-grid" id="musician">
+        <div class="tag" onclick="toggleTag(this)">Lo-fi</div>
+        <div class="tag" onclick="toggleTag(this)">Drill</div>
+        <div class="tag" onclick="toggleTag(this)">EDM</div>
+        <div class="tag" onclick="toggleTag(this)">Trap</div>
+        <div class="tag" onclick="toggleTag(this)">Pop</div>
+        <div class="tag" onclick="toggleTag(this)">Classical</div>
+        <div class="tag" onclick="toggleTag(this)">Synth Wave</div>
+        <div class="tag" onclick="toggleTag(this)">House</div>
+        <div class="tag" onclick="toggleTag(this)">Boom Bap</div>
+        <div class="tag" onclick="toggleTag(this)">Rock</div>
+        <div class="tag" onclick="toggleTag(this)">Bollywood</div>
+        <div class="tag" onclick="toggleTag(this)">Ambient</div>
+        <div class="tag" onclick="toggleTag(this)">Instrumental</div>
+        <div class="tag" onclick="toggleTag(this)">Hip Hop</div>
+        <div class="tag" onclick="toggleTag(this)">RnB/Soul</div>
+        <div class="tag" onclick="toggleTag(this)">Rapper/Lyricist</div>
+        <div class="tag" onclick="toggleTag(this)">Orchestral</div>
+        <div class="tag" onclick="toggleTag(this)">Singer/Songwriter</div>
+        <div class="tag otherTag" onclick="addCustomTag('musician')">Other +</div>
+      </div>
+    </div>
+
+    <div class="note">SELECT AT LEAST 1</div>
+    <button class="continue-btn" onclick="continueToNext()">CONTINUE</button>
+  </div>
+</body>
+</html>

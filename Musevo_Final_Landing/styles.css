@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit:wght@300;400;500;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: #000;
+  color: white;
+  text-align: center;
+}
+
+.hero {
+  background-color: #000;
+  background-image: radial-gradient(circle at 10% 20%, rgba(43, 60, 10, 0.62) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 30%, rgba(43, 10, 10, 0.62) 0%, transparent 50%);
+  padding: 60px 20px 120px;
+}
+
+.logo {
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: 'Aboreto', cursive;
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.cta-buttons button {
+  display: block;
+  width: 250px;
+  padding: 14px 20px;
+  margin: 15px auto;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Aboreto', cursive;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-buttons .login {
+  background-color: #b30000;
+  border: none;
+}
+
+.cta-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer {
+  background-color: #170000;
+  padding: 40px 20px;
+  font-size: 14px;
+  color: #bbb;
+  font-family: 'Outfit', sans-serif;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.column {
+  min-width: 140px;
+  text-align: left;
+}
+
+.column h4 {
+  font-family: 'Aboreto', cursive;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.column a {
+  display: block;
+  margin: 5px 0;
+  text-decoration: none;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.app-button {
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 6px 12px;
+  border: 1px solid white;
+  background: #660000;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+}
+
+.newsletter-btn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 20px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Aboreto', cursive;
+}
+
+.bottom-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  margin-top: 30px;
+}
+
+.bottom-footer a {
+  color: white;
+  margin: 0 4px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-icons img {
+  height: 22px;
+}

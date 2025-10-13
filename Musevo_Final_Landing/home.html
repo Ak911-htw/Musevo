@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Musevo | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+        background-color: #000;
+        color: white;
+      background-color: #000;
+  background-image: radial-gradient(circle at 10% 20%, rgba(23, 10, 10, 0.22) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 30%, rgba(83, 10, 10, 0.22) 0%, transparent 50%);
+  
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: linear-gradient(to bottom, #330000, transparent);
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .nav-buttons, .icon-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-buttons button, .icon-buttons button {
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Aboreto', cursive;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .hero-buttons {
+      margin-top: 20px;
+    }
+
+    .hero-buttons button {
+      background-color: #b30000;
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      font-family: 'Aboreto', cursive;
+      margin: 0 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hero-buttons .secondary {
+      background-color: transparent;
+      border: 1px solid white;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    .section-title {
+      font-family: 'Aboreto', cursive;
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .scrolling-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px 0;
+      justify-content: center;
+    }
+
+    .scrolling-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scrolling-row::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 4px;
+    }
+
+    .artist-card, .artwork-card, .music-card {
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+      flex: 0 0 auto;
+    }
+
+    .artist-card .circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin: 0 auto;
+    }
+
+    .artwork-card .box, .music-card .box {
+      width: 120px;
+      height: 120px;
+      background-color: #ccc;
+      border-radius: 6px;
+      margin: 0 auto;
+    }
+
+    .artist-card .name {
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .artist-card .handle {
+      font-size: 11px;
+      color: #aaa;
+    }
+
+    .artwork-card .title,
+    .music-card .title {
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .category-card {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 6px;
+      text-align: center;
+      padding: 10px;
+    }
+    .explore-section {
+  margin: 60px 20px;
+  padding: 40px 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  background-color: rgba(226, 0, 0, 0.07); /* subtle light gray base */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.explore-section::before,
+.explore-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 0;
+}
+
+.explore-section::before {
+  top: 0;
+  background: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+.explore-section::after {
+  bottom: 0;
+  background: linear-gradient(to top, #000 0%, transparent 100%);
+}
+
+.explore-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.explore-section h2 {
+  font-family: 'Aboreto', cursive;
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.category-card {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  flex: 0 0 auto;
+}
+
+.category-card .box {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 6px;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.category-card .label {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.category-card:hover .box {
+  transform: scale(1.05);
+}
+
+
+    footer {
+      background-color: #170000;
+      color: #bbb;
+      font-size: 13px;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .footer-columns .column {
+      min-width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .footer-columns h4 {
+      color: white;
+      font-family: 'Aboreto', cursive;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .footer-columns a {
+      color: #ccc;
+      display: block;
+      font-size: 13px;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    .newsletter-btn, .app-btn {
+      background-color: transparent;
+      border: 1px solid white;
+      padding: 6px 12px;
+      font-family: 'Outfit', sans-serif;
+      color: white;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .bottom-footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .social-icons img {
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <img src="assets/logo.png" alt="Musevo Logo" class="logo">
+        <div class="nav-buttons">
+          <button>Explore</button>
+          <button>$ Sell</button>
+          <button>♡ Wish List</button>
+        </div>
+        <div class="icon-buttons">
+          <button>🔔</button>
+          <button>🛒</button>
+          <button>👤</button>
+        </div>
+      </header>
+    
+      <div class="hero">
+        <img src="assets/MusevoHero.png" alt="Musevo Logo" height="60">
+        <h1>Where Creativity Evolves</h1>
+        <p>Sell your art. Grow your following. Connect with fans.</p>
+        <div class="hero-buttons">
+          <button>Explore</button>
+          <button class="secondary">Sell</button>
+        </div>
+      </div>
+    
+      <section>
+        <div class="section-title">Trending Artists</div>
+        <div class="scrolling-row">
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Aanya B</div>
+            <div class="handle">@aanya_art</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Kush T</div>
+            <div class="handle">@kush_draws</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Elena R</div>
+            <div class="handle">@elena.music</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Jay S</div>
+            <div class="handle">@jay.scribbles</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Tanya Z</div>
+            <div class="handle">@tanz.designs</div>
+          </a>
+        </div>
+      </section>
+    
+      <section>
+        <div class="section-title">Featured Artworks</div>
+        <div class="scrolling-row">
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Aurora Dreams</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Cosmic Dust</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Modern Myth</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Neon Zen</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Reflections</div>
+          </a>
+        </div>
+      </section>
+    
+      <section>
+        <div class="section-title">New Music</div>
+        <div class="scrolling-row">
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Night Pulse</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Echo Drift</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Moodscape</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Wavesync</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Skylit</div>
+          </a>
+        </div>
+      </section>
+    
+      <section class="explore-section">
+        <h2>Explore</h2>
+        <div class="categories">
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Visual Art</div>
+          </a>
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Music</div>
+          </a>
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Calligraphy</div>
+          </a>
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Fashion</div>
+          </a>
+        </div>
+      </section>
+      
+    
+      <footer>
+        <div class="footer-columns">
+          <div class="column">
+            <h4>Discover</h4>
+            <a href="#">Artists</a>
+            <a href="#">Music</a>
+            <a href="#">Artworks</a>
+            <button class="app-btn">GET OUR APP</button>
+          </div>
+          <div class="column">
+            <h4>Sell on Musevo</h4>
+            <a href="#">Start Selling</a>
+            <a href="#">Pricing</a>
+            <a href="#">Challenges</a>
+          </div>
+          <div class="column">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+          </div>
+          <div class="column">
+            <h4>Support</h4>
+            <a href="#">FAQ</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+          </div>
+        </div>
+        <div class="bottom-footer">
+          <button class="newsletter-btn">SUBSCRIBE TO OUR NEWSLETTER</button>
+          <p>© 2025 Musevo. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+          <div class="social-icons">
+            <img src="assets/instagram.png" alt="Instagram">
+            <img src="assets/facebook.png" alt="Facebook">
+            <img src="assets/youtube.png" alt="YouTube">
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
