@@ -6,31 +6,36 @@
   <title>My Profile - Musevo</title>
   <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --bg:#000;
+      --deep:#170000;
+      --accent:#330000;
+      --text:#fff;
+      --muted:#bbb;
+      --line:#2a0000;
+    }
+    *{box-sizing:border-box}
     body {
       margin: 0;
-      background-color: #000;
+      background-color: var(--bg);
       font-family: 'Outfit', sans-serif;
-      color: white;
+      color: var(--text);
     }
-
+    .profile-wrapper {
+max-width: 960px;
+margin: 0 auto;
+padding: 0 20px;
+}
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background: linear-gradient(to bottom, #330000, transparent);
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      border-bottom: 1px solid var(--line);
     }
-
-    .logo {
-      height: 40px;
-    }
-
-    .nav-buttons, .icon-buttons {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
+    .logo { height: 40px; }
+    .nav-buttons, .icon-buttons { display: flex; align-items: center; gap: 15px; }
     .nav-buttons button, .icon-buttons button {
       background-color: transparent;
       border: 1px solid white;
@@ -42,234 +47,226 @@
       cursor: pointer;
     }
 
-
-    .profile-container {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
+    .profile-container { max-width: 900px; margin: 30px auto; padding: 20px; }
     .cover-image {
-      background: #ccc;
-      height: 150px;
-      border-radius: 6px;
+      background: linear-gradient(135deg,#2a0000,#0c0000);
+      height: 180px;
+      border-radius: 10px;
       position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      overflow: visible;
     }
-
     .profile-pic {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: #ddd;
-      position: absolute;
-      top: 90px;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 3px solid #170000;
+width: 140px;
+height: 140px;
+border-radius: 50%;
+background: #ddd url('assets/profile-placeholder.png') center/cover no-repeat;
+position: absolute;
+top: 130px; /* Slightly lower */
+z-index: 10; /* Ensure it sits above the cover */
+left: 50%;
+transform: translateX(-50%);
+border: 4px solid #660000;
+box-shadow: 0 10px 30px rgba(0,0,0,.7);
+}
+    .header-spacer { height: 80px; }
+
+    .username { text-align: center; margin-top: 70px; }
+    .username h2 { margin:0; font-size: 28px; letter-spacing: .5px; }
+    .artist-line {
+      margin-top: 6px; text-align:center; color: var(--muted); font-size: 14px;
+    }
+    .quick-actions {
+      margin-top: 10px;
+      display: flex; justify-content: center; gap: 10px;
+    }
+    .ghost-btn {
+      background: transparent; border: 1px solid #fff3; color: #ddd;
+      padding: 6px 10px; font-size: 12px; border-radius: 6px; cursor: pointer;
+    }
+    .ghost-btn:hover { border-color:#fff7; color:#fff; }
+
+    /* Social + stats row */
+    .social-stats {
+      margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+    }
+    .social-links {
+      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+    .social-links a {
+      display: inline-flex; align-items: center; gap: 6px;
+      text-decoration: none; color: #ddd; font-size: 13px;
+      background: #120000; border: 1px solid var(--line);
+      padding: 6px 10px; border-radius: 999px;
+    }
+    .social-links img { height: 18px; width: 18px; }
+
+    .stats {
+      display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 10px;
+  width: auto;
+    margin-top: 0;
+    }
+    @media (min-width: 600px) {
+  .social-stats {
+    flex-wrap: nowrap;
+  }
+    .stats .pill{
+      background:#120000; border:1px solid var(--line);
+      padding:6px 10px; border-radius:999px; min-width:120px; text-align:center;
     }
 
-    .username {
-      text-align: center;
-      margin-top: 80px;
-      font-size: 20px;
-      letter-spacing: 1px;
+    .follow-wrap { display: flex; justify-content: center; }
+    .follow-btn{
+      padding:10px 18px; border-radius:999px; border:none; cursor:pointer;
+      background:#6b0000; color:#fff; letter-spacing:.2px; font-weight:600;
+      box-shadow: 0 6px 20px rgba(107,0,0,.35);
+      border:1px solid #7f0000;
     }
+    .follow-btn.following{ background:#0a2d17; border-color:#0e4a26; }
+    .follow-note{ font-size:12px; color:#9ad8b3; margin-left:8px; display:none; }
+    .follow-note.show{ display:inline; }
 
     .about-box {
-      background-color: #170000;
+      background-color: var(--deep);
       padding: 20px;
-      border-radius: 8px;
-      margin-top: 20px;
+      border-radius: 10px;
+      margin-top: 22px;
       text-align: center;
+      border: 1px solid var(--line);
     }
 
     .section-title {
-      margin: 60px 0 20px;
+      margin: 50px 0 16px;
       font-family: 'Aboreto', cursive;
       font-size: 20px;
       letter-spacing: 1px;
       text-align: center;
     }
-
-    .add-work {
-      display: flex;
-      justify-content: center;
-    }
-
+    .add-work { display: flex; justify-content: center; }
     .add-work button {
-      background-color: #170000;
-      border: none;
-      font-size: 60px;
-      color: #ddd;
-      width: 120px;
-      height: 120px;
-      border-radius: 6px;
-      cursor: pointer;
+      background-color: var(--deep);
+      border: 1px dashed #fff3;
+      font-size: 48px; color: #ddd; width: 120px; height: 120px;
+      border-radius: 10px; cursor: pointer;
     }
+    .add-work button:hover{ border-color:#fff8; color:#fff; }
 
-    .best-seller {
-      text-align: center;
-      margin-top: 40px;
-    }
-
+    .best-seller { text-align: center; margin-top: 30px; }
     .best-seller button {
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 4px;
-      margin-top: 10px;
-      cursor: pointer;
-      font-size: 14px;
+      background: transparent; border: 1px solid white; color: white;
+      padding: 10px 20px; border-radius: 6px; margin-top: 10px; cursor: pointer; font-size: 14px;
     }
 
     .similar-artists {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
+      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;
     }
-
-    .artist-card {
-      text-align: center;
-    }
-
-    .artist-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #ccc;
-      margin: 0 auto;
-    }
-
-    .artist-name {
-      font-size: 14px;
-      margin-top: 5px;
-    }
-
-    .insta-handle {
-      font-size: 12px;
-      color: #bbb;
-    }
+    .artist-card { text-align: center; background:#0b0000; border:1px solid var(--line); padding:14px 12px; border-radius:10px; width:140px; }
+    .artist-avatar { width: 60px; height: 60px; border-radius: 50%; background: #ccc; margin: 0 auto; }
+    .artist-name { font-size: 14px; margin-top: 8px; }
+    .insta-handle { font-size: 12px; color: #bbb; }
 
     footer {
-      background-color: #170000;
+      background-color: var(--deep);
       padding: 40px 20px;
       font-size: 14px;
       color: #bbb;
       margin-top: 60px;
+      border-top: 1px solid var(--line);
     }
-
-    .footer-columns {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 30px;
-    }
-
-    .column {
-      min-width: 140px;
-      text-align: left;
-    }
-
-    .column h4 {
-      font-family: 'Aboreto', cursive;
-      color: white;
-      margin-bottom: 10px;
-    }
-
-    .column a {
-      display: block;
-      margin: 5px 0;
-      text-decoration: none;
-      color: #ccc;
-      font-size: 14px;
-    }
-
+    .footer-columns { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 30px; }
+    .column { min-width: 140px; text-align: left; }
+    .column h4 { font-family: 'Aboreto', cursive; color: white; margin-bottom: 10px; }
+    .column a { display: block; margin: 5px 0; text-decoration: none; color: #ccc; font-size: 14px; }
     .app-button {
-      margin-top: 10px;
-      font-size: 12px;
-      padding: 6px 12px;
-      border: 1px solid white;
-      background: #660000;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: 'Outfit', sans-serif;
+      margin-top: 10px; font-size: 12px; padding: 6px 12px; border: 1px solid white;
+      background: #660000; color: white; border-radius: 4px; cursor: pointer; font-family: 'Outfit', sans-serif;
     }
-
     .newsletter-btn {
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      padding: 10px 20px;
-      font-size: 13px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: 'Aboreto', cursive;
+      background: transparent; border: 1px solid white; color: white;
+      padding: 10px 20px; font-size: 13px; border-radius: 4px; cursor: pointer; font-family: 'Aboreto', cursive;
     }
+    .bottom-footer { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 13px; margin-top: 30px; }
+    .bottom-footer a { color: white; margin: 0 4px; }
+    .social-icons { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
+    .social-icons img { height: 22px; }
 
-    .bottom-footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      margin-top: 30px;
-    }
-
-    .bottom-footer a {
-      color: white;
-      margin: 0 4px;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .social-icons img {
-      height: 22px;
+    @media (max-width:700px){
+      .social-stats{ grid-template-columns: 1fr; gap:10px; }
+      .stats{ order: 3; }
     }
   </style>
 </head>
 <body>
-
+  
+    <!-- everything goes inside here (navbar, profile-container, footer, etc.) -->
+    
   <!-- Navbar -->
   <header>
     <a href="home.html">
-  <img src="assets/logo.png" alt="Musevo Logo" class = "logo"/>
-</a>
-<div class = "nav-buttons">
+      <img src="assets/logo.png" alt="Musevo Logo" class="logo"/>
+    </a>
+    <div class="nav-buttons">
       <button>Explore</button>
       <button>$ Sell</button>
       <button>♡ Wish List</button>
     </div>
     <div class="icon-buttons">
-      <button>🔔</button>
-      <button>🛒</button>
-      <button>👤</button>
+      <button aria-label="Notifications">🔔</button>
+      <button aria-label="Cart">🛒</button>
+      <button aria-label="Profile">👤</button>
     </div>
   </header>
-  <!-- Profile Section -->
+  <div class="profile-wrapper">
+  <!-- Profile -->
   <div class="profile-container">
     <div class="cover-image">
-      <div class="profile-pic"></div>
+      <div class="profile-pic" title="Profile picture"></div>
     </div>
-    <div class="username"><h2 id="profile-name">[user]</h2></div>
-    
+    <div class="header-spacer"></div>
+
+    <div class="username">
+      <h2 id="profile-name">Hi there!</h2>
+    </div>
+    <div class="artist-line">
+      <span id="artist-name-line">Artist name: #<em id="artist-name">[add artist name]</em></span>
+    </div>
+
+    <div class="quick-actions">
+      <button class="ghost-btn" id="edit-artist-btn">Edit Artist Name</button>
+      <button class="ghost-btn" id="edit-socials-btn">Edit Social Links</button>
+    </div>
+
+    <div class="social-stats">
+      <!-- Left: Social Links -->
+      <div class="social-links" id="social-links">
+        <!-- filled by JS -->
+      </div>
+
+      <!-- Center: Follow button -->
+     
+      <!-- Right: Stats -->
+      <div class="stats">
+        <div class="pill"><strong id="followers-count">0</strong> Followers</div>
+        
+      </div>
+    </div>
 
     <div class="about-box">
       <h3>About me</h3>
+      <!-- Add your bio text here -->
     </div>
 
     <div class="section-title">MY WORK</div>
     <div class="add-work">
-      <button>+</button>
+      <button title="Add new work">+</button>
     </div>
 
     <div class="section-title">BEST SELLER</div>
@@ -305,6 +302,7 @@
         <div class="insta-handle">@abcd</div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Footer -->
@@ -346,15 +344,134 @@
       </div>
     </div>
   </footer>
-  <script>
-    const name = localStorage.getItem('musevoUserName');
-    if (name) {
-      document.getElementById('profile-name').textContent = `${name}`;
-    } else {
-      document.getElementById('profile-name').textContent = "Hi there!";
-    }
-  </script>
-  
 
+  <script>
+    // ---------- Helpers ----------
+    const qs = s => document.querySelector(s);
+    const qsa = s => Array.from(document.querySelectorAll(s));
+    const get = (k, def=null) => {
+      try{ const v = localStorage.getItem(k); return v===null?def:JSON.parse(v) }catch{ return localStorage.getItem(k) ?? def }
+    };
+    const set = (k, v) => localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v));
+
+    // ---------- Profile / Names ----------
+    const nameEl = document.getElementById('profile-name');
+    const artistEl = document.getElementById('artist-name');
+
+    const displayName = get('musevoUserName', null);
+    nameEl.textContent = displayName || 'Hi there!';
+
+    function loadArtistName(){
+      const artistName = get('musevoArtistName', '');
+      artistEl.textContent = artistName || '[add artist name]';
+    }
+    loadArtistName();
+
+    document.getElementById('edit-artist-btn').addEventListener('click', () => {
+      const current = get('musevoArtistName', '');
+      const val = prompt('Enter artist/stage name:', current || '');
+      if (val !== null) {
+        set('musevoArtistName', val.trim());
+        loadArtistName();
+      }
+    });
+
+    // ---------- Social Links ----------
+    const defaultSocials = {
+      instagram: '',
+      facebook: '',
+      youtube: ''
+    };
+    function loadSocials(){
+      const socials = { ...defaultSocials, ...(get('musevoSocials', {})) };
+      const wrap = document.getElementById('social-links');
+      wrap.innerHTML = '';
+
+      const items = [
+        {key:'instagram', label:'Instagram', icon:'assets/instagram.png'},
+        {key:'facebook',  label:'Facebook',  icon:'assets/facebook.png'},
+        {key:'youtube',   label:'YouTube',   icon:'assets/youtube.png'}
+      ];
+
+      items.forEach(({key,label,icon})=>{
+        const href = socials[key]?.trim();
+        const a = document.createElement('a');
+        a.href = href || '#';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.title = href ? `${label}: ${href}` : `Add your ${label} link`;
+        if (!href) a.style.opacity = .6;
+
+        const img = document.createElement('img');
+        img.src = icon; img.alt = label;
+        const span = document.createElement('span');
+        span.textContent = label;
+        a.append(img, span);
+        wrap.appendChild(a);
+      });
+    }
+    loadSocials();
+
+    document.getElementById('edit-socials-btn').addEventListener('click', ()=>{
+      const current = { ...defaultSocials, ...(get('musevoSocials', {})) };
+      const ig = prompt('Instagram URL:', current.instagram || '');
+      if (ig === null) return;
+      const fb = prompt('Facebook URL:', current.facebook || '');
+      if (fb === null) return;
+      const yt = prompt('YouTube URL:', current.youtube || '');
+      if (yt === null) return;
+      set('musevoSocials', { instagram: ig.trim(), facebook: fb.trim(), youtube: yt.trim() });
+      loadSocials();
+    });
+
+    // ---------- Followers / Following / Follow button ----------
+    const followersEl = document.getElementById('followers-count');
+    const followingEl = document.getElementById('following-count');
+    const followBtn = document.getElementById('follow-btn');
+    const followNote = document.getElementById('follow-note');
+
+    // seed followers if not set
+    if (get('musevoFollowers', null) === null) {
+      // seed between 120 and 1,200 for some life
+      const seed = Math.floor(120 + Math.random()*1080);
+      set('musevoFollowers', seed);
+    }
+    if (get('musevoFollowing', null) === null) {
+      set('musevoFollowing', Math.floor(10 + Math.random()*90));
+    }
+    function renderFollowUI(){
+      const followers = parseInt(get('musevoFollowers', 0), 10) || 0;
+      const following = parseInt(get('musevoFollowing', 0), 10) || 0;
+      const isFollowing = !!get('musevoIsFollowing', false);
+
+      followersEl.textContent = followers.toLocaleString();
+      followingEl.textContent = following.toLocaleString();
+
+      followBtn.textContent = isFollowing ? 'Following ✓' : 'Follow';
+      followBtn.classList.toggle('following', isFollowing);
+      followNote.classList.toggle('show', isFollowing);
+      followBtn.setAttribute('aria-pressed', String(isFollowing));
+    }
+    renderFollowUI();
+
+    followBtn.addEventListener('click', ()=>{
+      let followers = parseInt(get('musevoFollowers', 0), 10) || 0;
+      const isFollowing = !!get('musevoIsFollowing', false);
+      if (isFollowing) {
+        // unfollow
+        followers = Math.max(0, followers - 1);
+        set('musevoIsFollowing', false);
+      } else {
+        followers = followers + 1;
+        set('musevoIsFollowing', true);
+      }
+      set('musevoFollowers', followers);
+      renderFollowUI();
+    });
+
+    // Also set the profile name from your original key:
+    const name = localStorage.getItem('musevoUserName');
+    if (name) nameEl.textContent = `${name}`;
+  </script>
 </body>
 </html>
