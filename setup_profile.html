@@ -68,7 +68,6 @@
       text-align: center;
       color: #aaa;
     }
-
   </style>
 </head>
 <body>
@@ -77,11 +76,12 @@
     <div style="text-align: center;">
       <img src="assets/logo.png" height="50" alt="Musevo Logo">
     </div>
+
     <h1>Your Artist Name</h1>
-    <input type="text" id="artistName" placeholder="Enter your artist name" />
+    <input type="text" id="artist-name-input" placeholder="Enter your artist name" />
 
     <p>Write a brief / catchy description about you and your art</p>
-    <textarea rows="5" placeholder="Tell us about yourself..."></textarea>
+    <textarea rows="5" id="about-textarea" placeholder="Tell us about yourself..."></textarea>
 
     <button>Upload a Profile Picture</button>
 
@@ -89,28 +89,46 @@
     <div>
       <div class="social-icons">
         <img src="assets/instagram.png" />
-        <input type="url" placeholder="Enter your Instagram profile URL" />
+        <input type="url" id="instagram-url" placeholder="Enter your Instagram profile URL" />
+
       </div>
       <div class="social-icons">
         <img src="assets/facebook.png" />
-        <input type="url" placeholder="Enter your Facebook profile URL" />
+        <input type="url" id="facebook-url" placeholder="Enter your Facebook profile URL" />
       </div>
       <div class="social-icons">
         <img src="assets/youtube.png" />
-        <input type="url" placeholder="Enter your YouTube profile URL" />
+        <input type="url" id="youtube-url" placeholder="Enter your YouTube profile URL" />
       </div>
     </div>
 
-    <button onclick="goToProfile()">CONTINUE</button>
+  
+<button onclick="saveAndGoToProfile()">CONTINUE</button>
+
   </div>
 
   <script>
-    function goToProfile() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const name = urlParams.get('name') || '';
-      window.location.href = `profile.html?name=${encodeURIComponent(name)}`;
+    function saveAndGoToProfile() {
+      const artistName = document.getElementById("artist-name-input").value.trim();
+      const aboutText = document.getElementById("about-textarea").value.trim();
+  
+      const instagram = document.getElementById("instagram-url").value.trim();
+      const facebook = document.getElementById("facebook-url").value.trim();
+      const youtube = document.getElementById("youtube-url").value.trim();
+  
+      if (artistName) localStorage.setItem("musevoArtistName", JSON.stringify(artistName));
+      if (aboutText) localStorage.setItem("musevoAboutText", JSON.stringify(aboutText));
+  
+      const socialLinks = {
+        instagram,
+        facebook,
+        youtube
+      };
+      localStorage.setItem("musevoSocials", JSON.stringify(socialLinks));
+  
+      window.location.href = "profile.html";
     }
   </script>
-
+  
 </body>
 </html>
