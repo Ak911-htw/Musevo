@@ -58,18 +58,71 @@ padding: 0 20px;
       overflow: visible;
     }
     .profile-pic {
-width: 140px;
-height: 140px;
-border-radius: 50%;
-background: #ddd url('assets/profile-placeholder.png') center/cover no-repeat;
-position: absolute;
-top: 130px; /* Slightly lower */
-z-index: 10; /* Ensure it sits above the cover */
-left: 50%;
-transform: translateX(-50%);
-border: 4px solid #660000;
-box-shadow: 0 10px 30px rgba(0,0,0,.7);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid #660000;
+  box-shadow: 0 10px 30px rgba(0,0,0,.7);
+  background-color: #222;
+  cursor: pointer;
 }
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.modal-caption {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-caption button {
+  padding: 10px 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  background: #b30000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
     .header-spacer { height: 80px; }
 
     .username { text-align: center; margin-top: 70px; }
@@ -228,7 +281,24 @@ box-shadow: 0 10px 30px rgba(0,0,0,.7);
   <!-- Profile -->
   <div class="profile-container">
     <div class="cover-image">
-      <div class="profile-pic" title="Profile picture"></div>
+      <div class="profile-pic" title="Click to view or change picture" onclick="openProfilePicOptions()">
+  <img id="profile-image" src="assets/profile-placeholder.png"/>
+  <input type="file" id="profile-upload" accept="image/*" style="display: none;" />
+</div>
+
+<!-- Modal for Full View -->
+<div id="profile-modal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modal-img" />
+  <div class="modal-caption">
+    <button onclick="document.getElementById('profile-upload').click(); closeModal();">Change Photo</button>
+  </div>
+</div>
+
+</div>
+
+</div>
+
     </div>
     <div class="header-spacer"></div>
 
@@ -236,7 +306,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,.7);
       <h2 id="profile-name">Hi there!</h2>
     </div>
     <div class="artist-line">
-      <span id="artist-name-line">Artist name: #<em id="artist-name">[add artist name]</em></span>
+      <span id="artist-name-line">Artist name: #<em id="artist-name-input">[add artist name]</em></span>
     </div>
 
     <div class="quick-actions">
@@ -261,7 +331,8 @@ box-shadow: 0 10px 30px rgba(0,0,0,.7);
 
     <div class="about-box">
       <h3>About me</h3>
-      <!-- Add your bio text here -->
+      <p id="about-me-text">Loading...</p>
+
     </div>
 
     <div class="section-title">MY WORK</div>
@@ -468,10 +539,54 @@ box-shadow: 0 10px 30px rgba(0,0,0,.7);
       set('musevoFollowers', followers);
       renderFollowUI();
     });
+    const aboutTextEl = document.getElementById('about-me-text');
+const aboutText = localStorage.getItem("musevoAboutText");
+if (aboutText) {
+  aboutTextEl.textContent = JSON.parse(aboutText);
+} else {
+  aboutTextEl.textContent = "This artist hasn’t added a bio yet.";
+}
+
 
     // Also set the profile name from your original key:
     const name = localStorage.getItem('musevoUserName');
     if (name) nameEl.textContent = `${name}`;
+    const profileImgEl = document.getElementById('profile-image');
+const profileUploadEl = document.getElementById('profile-upload');
+
+// Load stored image if available
+const storedPic = localStorage.getItem('musevoProfilePic');
+if (storedPic) profileImgEl.src = storedPic;
+
+// Open modal with full image and "Change" option
+function openProfilePicOptions() {
+  const modal = document.getElementById("profile-modal");
+  const modalImg = document.getElementById("modal-img");
+  modal.style.display = "block";
+  modalImg.src = profileImgEl.src;
+}
+
+function closeModal() {
+  document.getElementById("profile-modal").style.display = "none";
+}
+
+// Handle image upload
+profileUploadEl.addEventListener('change', function (event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const imgData = e.target.result;
+    profileImgEl.src = imgData;
+    localStorage.setItem('musevoProfilePic', imgData);
+  };
+  reader.readAsDataURL(file);
+});
+
+  
+
+
   </script>
 </body>
 </html>
