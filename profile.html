@@ -3,39 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Profile - Musevo</title>
+  <title>Musevo | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#000;
-      --deep:#170000;
-      --accent:#330000;
-      --text:#fff;
-      --muted:#bbb;
-      --line:#2a0000;
-    }
-    *{box-sizing:border-box}
     body {
       margin: 0;
-      background-color: var(--bg);
       font-family: 'Outfit', sans-serif;
-      color: var(--text);
+        background-color: #000;
+        color: white;
+      background-color: #000;
+  background-image: radial-gradient(circle at 10% 20%, rgba(23, 10, 10, 0.22) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 30%, rgba(83, 10, 10, 0.22) 0%, transparent 50%);
+  
     }
-    .profile-wrapper {
-max-width: 960px;
-margin: 0 auto;
-padding: 0 20px;
-}
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      border-bottom: 1px solid var(--line);
+      background: linear-gradient(to bottom, #330000, transparent);
     }
-    .logo { height: 40px; }
-    .nav-buttons, .icon-buttons { display: flex; align-items: center; gap: 15px; }
+
+    .logo {
+      height: 40px;
+    }
+
+    .nav-buttons, .icon-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
     .nav-buttons button, .icon-buttons button {
       background-color: transparent;
       border: 1px solid white;
@@ -47,547 +46,439 @@ padding: 0 20px;
       cursor: pointer;
     }
 
-    .profile-container { max-width: 900px; margin: 30px auto; padding: 20px; }
-    .cover-image {
-      background: linear-gradient(135deg,#2a0000,#0c0000);
-      height: 180px;
-      border-radius: 10px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      overflow: visible;
-    }
-    .profile-pic {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: absolute;
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 4px solid #660000;
-  box-shadow: 0 10px 30px rgba(0,0,0,.7);
-  background-color: #222;
-  cursor: pointer;
-}
-
-.profile-pic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  padding-top: 60px;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 10px;
-}
-
-.modal-caption {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.modal-caption button {
-  padding: 10px 20px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  background: #b30000;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  color: white;
-  font-size: 36px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-    .header-spacer { height: 80px; }
-
-    .username { text-align: center; margin-top: 70px; }
-    .username h2 { margin:0; font-size: 28px; letter-spacing: .5px; }
-    .artist-line {
-      margin-top: 6px; text-align:center; color: var(--muted); font-size: 14px;
-    }
-    .quick-actions {
-      margin-top: 10px;
-      display: flex; justify-content: center; gap: 10px;
-    }
-    .ghost-btn {
-      background: transparent; border: 1px solid #fff3; color: #ddd;
-      padding: 6px 10px; font-size: 12px; border-radius: 6px; cursor: pointer;
-    }
-    .ghost-btn:hover { border-color:#fff7; color:#fff; }
-
-    /* Social + stats row */
-    .social-stats {
-      margin-top: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-    }
-    .social-links {
-      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
-    }
-    .social-links a {
-      display: inline-flex; align-items: center; gap: 6px;
-      text-decoration: none; color: #ddd; font-size: 13px;
-      background: #120000; border: 1px solid var(--line);
-      padding: 6px 10px; border-radius: 999px;
-    }
-    .social-links img { height: 18px; width: 18px; }
-
-    .stats {
-      display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 10px;
-  width: auto;
-    margin-top: 0;
-    }
-    @media (min-width: 600px) {
-  .social-stats {
-    flex-wrap: nowrap;
-  }
-    .stats .pill{
-      background:#120000; border:1px solid var(--line);
-      padding:6px 10px; border-radius:999px; min-width:120px; text-align:center;
-    }
-
-    .follow-wrap { display: flex; justify-content: center; }
-    .follow-btn{
-      padding:10px 18px; border-radius:999px; border:none; cursor:pointer;
-      background:#6b0000; color:#fff; letter-spacing:.2px; font-weight:600;
-      box-shadow: 0 6px 20px rgba(107,0,0,.35);
-      border:1px solid #7f0000;
-    }
-    .follow-btn.following{ background:#0a2d17; border-color:#0e4a26; }
-    .follow-note{ font-size:12px; color:#9ad8b3; margin-left:8px; display:none; }
-    .follow-note.show{ display:inline; }
-
-    .about-box {
-      background-color: var(--deep);
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 22px;
+    .hero {
       text-align: center;
-      border: 1px solid var(--line);
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Aboreto', cursive;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .hero-buttons {
+      margin-top: 20px;
+    }
+
+    .hero-buttons button {
+      background-color: #b30000;
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      font-family: 'Aboreto', cursive;
+      margin: 0 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hero-buttons .secondary {
+      background-color: transparent;
+      border: 1px solid white;
+    }
+
+    section {
+      padding: 40px 20px;
     }
 
     .section-title {
-      margin: 50px 0 16px;
       font-family: 'Aboreto', cursive;
-      font-size: 20px;
-      letter-spacing: 1px;
+      font-size: 18px;
+      margin-bottom: 20px;
       text-align: center;
     }
-    .add-work { display: flex; justify-content: center; }
-    .add-work button {
-      background-color: var(--deep);
-      border: 1px dashed #fff3;
-      font-size: 48px; color: #ddd; width: 120px; height: 120px;
-      border-radius: 10px; cursor: pointer;
-    }
-    .add-work button:hover{ border-color:#fff8; color:#fff; }
 
-    .best-seller { text-align: center; margin-top: 30px; }
-    .best-seller button {
-      background: transparent; border: 1px solid white; color: white;
-      padding: 10px 20px; border-radius: 6px; margin-top: 10px; cursor: pointer; font-size: 14px;
+    .scrolling-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px 0;
+      justify-content: center;
     }
 
-    .similar-artists {
-      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;
+    .scrolling-row::-webkit-scrollbar {
+      height: 8px;
     }
-    .artist-card { text-align: center; background:#0b0000; border:1px solid var(--line); padding:14px 12px; border-radius:10px; width:140px; }
-    .artist-avatar { width: 60px; height: 60px; border-radius: 50%; background: #ccc; margin: 0 auto; }
-    .artist-name { font-size: 14px; margin-top: 8px; }
-    .insta-handle { font-size: 12px; color: #bbb; }
+
+    .scrolling-row::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 4px;
+    }
+
+    .artist-card, .artwork-card, .music-card {
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+      flex: 0 0 auto;
+    }
+
+    .artist-card .circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin: 0 auto;
+    }
+
+    .artwork-card .box, .music-card .box {
+      width: 120px;
+      height: 120px;
+      background-color: #ccc;
+      border-radius: 6px;
+      margin: 0 auto;
+    }
+
+    .artist-card .name {
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .artist-card .handle {
+      font-size: 11px;
+      color: #aaa;
+    }
+
+    .artwork-card .title,
+    .music-card .title {
+      font-size: 13px;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .category-card {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 6px;
+      text-align: center;
+      padding: 10px;
+    }
+    .explore-section {
+  margin: 60px 20px;
+  padding: 40px 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  background-color: rgba(226, 0, 0, 0.07); /* subtle light gray base */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.explore-section::before,
+.explore-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 0;
+}
+
+.explore-section::before {
+  top: 0;
+  background: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+.explore-section::after {
+  bottom: 0;
+  background: linear-gradient(to top, #000 0%, transparent 100%);
+}
+
+.explore-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.explore-section h2 {
+  font-family: 'Aboreto', cursive;
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.category-card {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  flex: 0 0 auto;
+}
+
+.category-card .box {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 6px;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.category-card .label {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.category-card:hover .box {
+  transform: scale(1.05);
+}
+
 
     footer {
-      background-color: var(--deep);
-      padding: 40px 20px;
-      font-size: 14px;
+      background-color: #170000;
       color: #bbb;
-      margin-top: 60px;
-      border-top: 1px solid var(--line);
+      font-size: 13px;
+      padding: 40px 20px 20px;
     }
-    .footer-columns { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 30px; }
-    .column { min-width: 140px; text-align: left; }
-    .column h4 { font-family: 'Aboreto', cursive; color: white; margin-bottom: 10px; }
-    .column a { display: block; margin: 5px 0; text-decoration: none; color: #ccc; font-size: 14px; }
-    .app-button {
-      margin-top: 10px; font-size: 12px; padding: 6px 12px; border: 1px solid white;
-      background: #660000; color: white; border-radius: 4px; cursor: pointer; font-family: 'Outfit', sans-serif;
-    }
-    .newsletter-btn {
-      background: transparent; border: 1px solid white; color: white;
-      padding: 10px 20px; font-size: 13px; border-radius: 4px; cursor: pointer; font-family: 'Aboreto', cursive;
-    }
-    .bottom-footer { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 13px; margin-top: 30px; }
-    .bottom-footer a { color: white; margin: 0 4px; }
-    .social-icons { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
-    .social-icons img { height: 22px; }
 
-    @media (max-width:700px){
-      .social-stats{ grid-template-columns: 1fr; gap:10px; }
-      .stats{ order: 3; }
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .footer-columns .column {
+      min-width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .footer-columns h4 {
+      color: white;
+      font-family: 'Aboreto', cursive;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .footer-columns a {
+      color: #ccc;
+      display: block;
+      font-size: 13px;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    .newsletter-btn, .app-btn {
+      background-color: transparent;
+      border: 1px solid white;
+      padding: 6px 12px;
+      font-family: 'Outfit', sans-serif;
+      color: white;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .bottom-footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .social-icons img {
+      height: 20px;
     }
   </style>
 </head>
 <body>
-  
-    <!-- everything goes inside here (navbar, profile-container, footer, etc.) -->
+    <header>
+        <img src="assets/logo.png" alt="Musevo Logo" class="logo">
+        <div class="nav-buttons">
+          <button onclick="location.href='explore.html'">Explore</button>
+          <button>$ Sell</button>
+          <button>♡ Wish List</button>
+          <button>🔍 Search</button>
+        </div>
+        <div class="icon-buttons">
+          <button>🔔</button>
+          <button>🛒</button>
+          <button>👤</button>
+        </div>
+      </header>
     
-  <!-- Navbar -->
-  <header>
-    <a href="home.html">
-      <img src="assets/logo.png" alt="Musevo Logo" class="logo"/>
-    </a>
-    <div class="nav-buttons">
-      <button onclick="location.href='explore.html'">Explore</button>
-      <button>$ Sell</button>
-      <button>♡ Wish List</button>
-      <button>🔍 Search</button>
-    </div>
-    <div class="icon-buttons">
-      <button aria-label="Notifications">🔔</button>
-      <button aria-label="Cart">🛒</button>
-      <button aria-label="Profile">👤</button>
-    </div>
-  </header>
-  <div class="profile-wrapper">
-  <!-- Profile -->
-  <div class="profile-container">
-    <div class="cover-image">
-      <div class="profile-pic" title="Click to view or change picture" onclick="openProfilePicOptions()">
-  <img id="profile-image" src="assets/profile-placeholder.png"/>
-  <input type="file" id="profile-upload" accept="image/*" style="display: none;" />
-</div>
-
-<!-- Modal for Full View -->
-<div id="profile-modal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="modal-img" />
-  <div class="modal-caption">
-    <button onclick="document.getElementById('profile-upload').click(); closeModal();">Change Photo</button>
-  </div>
-</div>
-
-</div>
-
-</div>
-
-    </div>
-    <div class="header-spacer"></div>
-
-    <div class="username">
-      <h2 id="profile-name">Hi there!</h2>
-    </div>
-    <div class="artist-line">
-      <span id="artist-name-line">Artist name: #<em id="artist-name-input">[add artist name]</em></span>
-    </div>
-
-    <div class="quick-actions">
-      <button class="ghost-btn" id="edit-artist-btn">Edit Artist Name</button>
-      <button class="ghost-btn" id="edit-socials-btn">Edit Social Links</button>
-    </div>
-
-    <div class="social-stats">
-      <!-- Left: Social Links -->
-      <div class="social-links" id="social-links">
-        <!-- filled by JS -->
+      <div class="hero">
+        <img src="assets/MusevoHero.png" alt="Musevo Logo" height="60">
+        <h1>Where Creativity Evolves</h1>
+        <p>Sell your art. Grow your following. Connect with fans.</p>
+        <div class="hero-buttons">
+          <button>Explore</button>
+          <button class="secondary">Sell</button>
+        </div>
       </div>
-
-      <!-- Center: Follow button -->
-     
-      <!-- Right: Stats -->
-      <div class="stats">
-        <div class="pill"><strong id="followers-count">0</strong> Followers</div>
-        
-      </div>
-    </div>
-
-    <div class="about-box">
-      <h3>About me</h3>
-      <p id="about-me-text">Loading...</p>
-
-    </div>
-
-    <div class="section-title">MY WORK</div>
-    <div class="add-work">
-      <button title="Add new work">+</button>
-    </div>
-
-    <div class="section-title">BEST SELLER</div>
-    <div class="best-seller">
-      <button>START SELLING TO GET A BEST SELLING ART</button>
-    </div>
-
-    <div class="section-title">SIMILAR ARTISTS</div>
-    <div class="similar-artists">
-      <div class="artist-card">
-        <div class="artist-avatar"></div>
-        <div class="artist-name">abcd</div>
-        <div class="insta-handle">@abcd</div>
-      </div>
-      <div class="artist-card">
-        <div class="artist-avatar"></div>
-        <div class="artist-name">abcd</div>
-        <div class="insta-handle">@abcd</div>
-      </div>
-      <div class="artist-card">
-        <div class="artist-avatar"></div>
-        <div class="artist-name">abcd</div>
-        <div class="insta-handle">@abcd</div>
-      </div>
-      <div class="artist-card">
-        <div class="artist-avatar"></div>
-        <div class="artist-name">abcd</div>
-        <div class="insta-handle">@abcd</div>
-      </div>
-      <div class="artist-card">
-        <div class="artist-avatar"></div>
-        <div class="artist-name">abcd</div>
-        <div class="insta-handle">@abcd</div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-columns">
-      <div class="column">
-        <h4>Discover</h4>
-        <a href="#">Artists</a>
-        <a href="#">Music</a>
-        <a href="#">Artworks</a>
-        <button class="app-button">GET OUR APP</button>
-      </div>
-      <div class="column">
-        <h4>Sell on Musevo</h4>
-        <a href="#">Start Selling</a>
-        <a href="#">Pricing</a>
-        <a href="#">Challenges</a>
-      </div>
-      <div class="column">
-        <h4>Company</h4>
-        <a href="#">About Us</a>
-        <a href="#">Careers</a>
-        <a href="#">Blog</a>
-      </div>
-      <div class="column">
-        <h4>Support</h4>
-        <a href="#">FAQ</a>
-        <a href="#">Contact</a>
-        <a href="#">Privacy</a>
-      </div>
-    </div>
-    <div class="bottom-footer">
-      <button class="newsletter-btn">SUBSCRIBE TO OUR NEWSLETTER</button>
-      <p>© 2025 Musevo. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
-      <div class="social-icons">
-        <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="assets/youtube.png" alt="YouTube"></a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // ---------- Helpers ----------
-    const qs = s => document.querySelector(s);
-    const qsa = s => Array.from(document.querySelectorAll(s));
-    const get = (k, def=null) => {
-      try{ const v = localStorage.getItem(k); return v===null?def:JSON.parse(v) }catch{ return localStorage.getItem(k) ?? def }
-    };
-    const set = (k, v) => localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v));
-
-    // ---------- Profile / Names ----------
-    const nameEl = document.getElementById('profile-name');
-    const artistEl = document.getElementById('artist-name');
-
-    const displayName = get('musevoUserName', null);
-    nameEl.textContent = displayName || 'Hi there!';
-
-    function loadArtistName(){
-      const artistName = get('musevoArtistName', '');
-      artistEl.textContent = artistName || '[add artist name]';
-    }
-    loadArtistName();
-
-    document.getElementById('edit-artist-btn').addEventListener('click', () => {
-      const current = get('musevoArtistName', '');
-      const val = prompt('Enter artist/stage name:', current || '');
-      if (val !== null) {
-        set('musevoArtistName', val.trim());
-        loadArtistName();
-      }
-    });
-
-    // ---------- Social Links ----------
-    const defaultSocials = {
-      instagram: '',
-      facebook: '',
-      youtube: ''
-    };
-    function loadSocials(){
-      const socials = { ...defaultSocials, ...(get('musevoSocials', {})) };
-      const wrap = document.getElementById('social-links');
-      wrap.innerHTML = '';
-
-      const items = [
-        {key:'instagram', label:'Instagram', icon:'assets/instagram.png'},
-        {key:'facebook',  label:'Facebook',  icon:'assets/facebook.png'},
-        {key:'youtube',   label:'YouTube',   icon:'assets/youtube.png'}
-      ];
-
-      items.forEach(({key,label,icon})=>{
-        const href = socials[key]?.trim();
-        const a = document.createElement('a');
-        a.href = href || '#';
-        a.target = '_blank';
-        a.rel = 'noopener';
-        a.title = href ? `${label}: ${href}` : `Add your ${label} link`;
-        if (!href) a.style.opacity = .6;
-
-        const img = document.createElement('img');
-        img.src = icon; img.alt = label;
-        const span = document.createElement('span');
-        span.textContent = label;
-        a.append(img, span);
-        wrap.appendChild(a);
-      });
-    }
-    loadSocials();
-
-    document.getElementById('edit-socials-btn').addEventListener('click', ()=>{
-      const current = { ...defaultSocials, ...(get('musevoSocials', {})) };
-      const ig = prompt('Instagram URL:', current.instagram || '');
-      if (ig === null) return;
-      const fb = prompt('Facebook URL:', current.facebook || '');
-      if (fb === null) return;
-      const yt = prompt('YouTube URL:', current.youtube || '');
-      if (yt === null) return;
-      set('musevoSocials', { instagram: ig.trim(), facebook: fb.trim(), youtube: yt.trim() });
-      loadSocials();
-    });
-
-    // ---------- Followers / Following / Follow button ----------
-    const followersEl = document.getElementById('followers-count');
-    const followingEl = document.getElementById('following-count');
-    const followBtn = document.getElementById('follow-btn');
-    const followNote = document.getElementById('follow-note');
-
-    // seed followers if not set
-    if (get('musevoFollowers', null) === null) {
-      // seed between 120 and 1,200 for some life
-      const seed = Math.floor(120 + Math.random()*1080);
-      set('musevoFollowers', seed);
-    }
-    if (get('musevoFollowing', null) === null) {
-      set('musevoFollowing', Math.floor(10 + Math.random()*90));
-    }
-    function renderFollowUI(){
-      const followers = parseInt(get('musevoFollowers', 0), 10) || 0;
-      const following = parseInt(get('musevoFollowing', 0), 10) || 0;
-      const isFollowing = !!get('musevoIsFollowing', false);
-
-      followersEl.textContent = followers.toLocaleString();
-      followingEl.textContent = following.toLocaleString();
-
-      followBtn.textContent = isFollowing ? 'Following ✓' : 'Follow';
-      followBtn.classList.toggle('following', isFollowing);
-      followNote.classList.toggle('show', isFollowing);
-      followBtn.setAttribute('aria-pressed', String(isFollowing));
-    }
-    renderFollowUI();
-
-    followBtn.addEventListener('click', ()=>{
-      let followers = parseInt(get('musevoFollowers', 0), 10) || 0;
-      const isFollowing = !!get('musevoIsFollowing', false);
-      if (isFollowing) {
-        // unfollow
-        followers = Math.max(0, followers - 1);
-        set('musevoIsFollowing', false);
-      } else {
-        followers = followers + 1;
-        set('musevoIsFollowing', true);
-      }
-      set('musevoFollowers', followers);
-      renderFollowUI();
-    });
-    const aboutTextEl = document.getElementById('about-me-text');
-const aboutText = localStorage.getItem("musevoAboutText");
-if (aboutText) {
-  aboutTextEl.textContent = JSON.parse(aboutText);
-} else {
-  aboutTextEl.textContent = "This artist hasn’t added a bio yet.";
-}
-
-
-    // Also set the profile name from your original key:
-    const name = localStorage.getItem('musevoUserName');
-    if (name) nameEl.textContent = `${name}`;
-    const profileImgEl = document.getElementById('profile-image');
-const profileUploadEl = document.getElementById('profile-upload');
-
-// Load stored image if available
-const storedPic = localStorage.getItem('musevoProfilePic');
-if (storedPic) profileImgEl.src = storedPic;
-
-// Open modal with full image and "Change" option
-function openProfilePicOptions() {
-  const modal = document.getElementById("profile-modal");
-  const modalImg = document.getElementById("modal-img");
-  modal.style.display = "block";
-  modalImg.src = profileImgEl.src;
-}
-
-function closeModal() {
-  document.getElementById("profile-modal").style.display = "none";
-}
-
-// Handle image upload
-profileUploadEl.addEventListener('change', function (event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const imgData = e.target.result;
-    profileImgEl.src = imgData;
-    localStorage.setItem('musevoProfilePic', imgData);
-  };
-  reader.readAsDataURL(file);
-});
-
-  
-
-
-  </script>
+    
+      <section>
+        <div class="section-title">Trending Artists</div>
+        <div class="scrolling-row">
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Aanya B</div>
+            <div class="handle">@aanya_art</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Kush T</div>
+            <div class="handle">@kush_draws</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Elena R</div>
+            <div class="handle">@elena.music</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Jay S</div>
+            <div class="handle">@jay.scribbles</div>
+          </a>
+          <a href="#" class="artist-card">
+            <div class="circle"></div>
+            <div class="name">Tanya Z</div>
+            <div class="handle">@tanz.designs</div>
+          </a>
+        </div>
+      </section>
+    
+      <section>
+        <div class="section-title">Featured Artworks</div>
+        <div class="scrolling-row">
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Aurora Dreams</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Cosmic Dust</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Modern Myth</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Neon Zen</div>
+          </a>
+          <a href="#" class="artwork-card">
+            <div class="box"></div>
+            <div class="title">Reflections</div>
+          </a>
+        </div>
+      </section>
+    
+      <section>
+        <div class="section-title">New Music</div>
+        <div class="scrolling-row">
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Night Pulse</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Echo Drift</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Moodscape</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Wavesync</div>
+          </a>
+          <a href="#" class="music-card">
+            <div class="box"></div>
+            <div class="title">Skylit</div>
+          </a>
+        </div>
+      </section>
+    
+      <section class="explore-section">
+        <h2>Explore</h2>
+        <div class="categories">
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Visual Art</div>
+          </a>
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Music</div>
+          </a>
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Calligraphy</div>
+          </a>
+          <a href="#" class="category-card">
+            <div class="box"></div>
+            <div class="label">Fashion</div>
+          </a>
+        </div>
+      </section>
+      
+    
+      <footer>
+        <div class="footer-columns">
+          <div class="column">
+            <h4>Discover</h4>
+            <a href="#">Artists</a>
+            <a href="#">Music</a>
+            <a href="#">Artworks</a>
+            <button class="app-btn">GET OUR APP</button>
+          </div>
+          <div class="column">
+            <h4>Sell on Musevo</h4>
+            <a href="#">Start Selling</a>
+            <a href="#">Pricing</a>
+            <a href="#">Challenges</a>
+          </div>
+          <div class="column">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+          </div>
+          <div class="column">
+            <h4>Support</h4>
+            <a href="#">FAQ</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+          </div>
+        </div>
+        <div class="bottom-footer">
+          <button class="newsletter-btn">SUBSCRIBE TO OUR NEWSLETTER</button>
+          <p>© 2025 Musevo. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+          <div class="social-icons">
+            <img src="assets/instagram.png" alt="Instagram">
+            <img src="assets/facebook.png" alt="Facebook">
+            <img src="assets/youtube.png" alt="YouTube">
+          </div>
+        </div>
+      </footer>
 </body>
 </html>
