@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Artists | Musevo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: linear-gradient(to bottom, #330000, transparent);
+    }
+
+    .logo { height: 40px; }
+
+    .nav-buttons, .icon-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-buttons button, .icon-buttons button {
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* ========== SECTION STYLES ========== */
+    .section {
+      position: relative;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 80px 20px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6); /* dark overlay for readability */
+      z-index: 0;
+    }
+
+    .section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Aboreto', cursive;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .category-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px 40px; /* 30px vertical, 40px horizontal gap */
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .category-card {
+      width: 140px;
+      height: 180px;
+      background-color: #1a0000;
+      border: 1px solid #330000;
+      border-radius: 10px;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .category-card:hover {
+      transform: scale(1.05);
+      background-color: #400000;
+    }
+
+    .expand-btn {
+      display: block;
+      margin: 20px auto 0;
+      background-color: #330000;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .hidden { display: none; }
+
+    /* ========== SECTION BACKGROUNDS ========== */
+    .bg-visual {
+      background: url('assets/bg-visual-artist.jpg') center/cover no-repeat;
+    }
+
+    .bg-photo {
+      background: url('assets/bg-photographer.jpg') center/cover no-repeat;
+    }
+
+    .bg-fashion {
+      background: url('assets/bg-fashion.jpg') center/cover no-repeat;
+    }
+
+    .bg-calligraphy {
+      background: url('assets/bg-calligraphy.jpg') center/cover no-repeat;
+    }
+
+    .bg-music {
+      background: url('assets/bg-musician.jpg') center/cover no-repeat;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background-color: #170000;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #bbb;
+      margin-top: 60px;
+      border-top: 1px solid #2a0000;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .column {
+      min-width: 140px;
+      text-align: left;
+    }
+
+    .column h4 {
+      font-family: 'Aboreto', cursive;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .column a {
+      display: block;
+      margin: 5px 0;
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .app-button, .newsletter-btn {
+      background-color: #660000;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .bottom-footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .social-icons img { height: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="home.html">
+    <img src="assets/logo.png" alt="Musevo Logo" class="logo"/>
+  </a>
+  <div class="nav-buttons">
+    <button onclick="location.href='explore.html'">Explore</button>
+    <button>$ Sell</button>
+    <button>♡ Wish List</button>
+    <button>🔍 Search</button>
+  </div>
+  <div class="icon-buttons">
+    <button>🔔</button>
+    <button>🛒</button>
+    <button onclick="location.href='profile.html'">👤</button>
+  </div>
+</header>
+
+<div id="explore-content"></div>
+
+<script>
+const categories = {
+  'Visual Artist': [
+    'Digital Art', 'Traditional Art', 'Mixed Media', '3D Art', 'Illustration',
+    'Concept Art', 'Comics', 'NFT Art', 'Collage Art', 'Other'
+  ],
+  'Photographer / Videographer': [
+    'Portrait', 'Travel', 'Cinematic Videography', 'Music Videos', 'Street',
+    'Editorial/Fashion', 'Black and white', 'Landscape', 'Experimental Short Films', 'Other'
+  ],
+  'Fashion Designer': [
+    'Street wear', 'High Fashion', 'Tech wear', 'Embroidery', 'Pattern Design',
+    'Traditional', 'Experimental', 'Graphic Tees', 'Sustainable Fashion', 'Other'
+  ],
+  'Calligraphy / Typography Artist': [
+    'Modern Script', 'Sans serif', 'Graffiti', '3D Typography', 'Brush Lettering',
+    'Animated Typography', 'Logo Calligraphy', 'Gothic/Blackletter', 'Other'
+  ],
+  'Musician': [
+    'Lo-fi', 'Drill', 'EDM', 'Trap', 'Pop',
+    'Classical', 'Synth Wave', 'House/Deep House', 'Boom Bap', 'Rock/Indie Rock',
+    'Bollywood/Indian pop', 'Ambient', 'Instrumental', 'Hip Hop', 'RnB/Soul',
+    'Rapper/Lyricist', 'Orchestral', 'Singer/Songwriter', 'Other'
+  ]
+};
+
+const bgClasses = {
+  'Visual Artist': 'bg-visual',
+  'Photographer / Videographer': 'bg-photo',
+  'Fashion Designer': 'bg-fashion',
+  'Calligraphy / Typography Artist': 'bg-calligraphy',
+  'Musician': 'bg-music'
+};
+
+const container = document.getElementById('explore-content');
+
+Object.entries(categories).forEach(([sectionTitle, items]) => {
+  const section = document.createElement('section');
+  section.className = 'section ' + bgClasses[sectionTitle];
+
+  const heading = document.createElement('h2');
+  heading.textContent = sectionTitle;
+  section.appendChild(heading);
+
+  const grid = document.createElement('div');
+  grid.className = 'category-grid';
+  section.appendChild(grid);
+
+  const extraGrid = document.createElement('div');
+  extraGrid.className = 'category-grid hidden';
+  section.appendChild(extraGrid);
+
+  items.forEach((label, i) => {
+    const card = document.createElement('a');
+    card.className = 'category-card';
+    card.href = `${label.toLowerCase().replace(/[^a-z0-9]+/g,'-')}.html`;
+    card.innerHTML = `
+      <img src="assets/placeholder.png" alt="${label}" />
+      <span>${label}</span>
+    `;
+    (i < 5 ? grid : extraGrid).appendChild(card);
+  });
+
+  if (items.length > 5) {
+    const btn = document.createElement('button');
+    btn.className = 'expand-btn';
+    btn.textContent = '+ More';
+    btn.addEventListener('click', () => {
+      extraGrid.classList.toggle('hidden');
+      btn.textContent = extraGrid.classList.contains('hidden') ? '+ More' : '− Less';
+    });
+    section.appendChild(btn);
+  }
+
+  container.appendChild(section);
+});
+</script>
+
+<footer class="footer">
+  <div class="footer-columns">
+    <div class="column">
+      <h4>Discover</h4>
+      <a href="#">Artists</a>
+      <a href="#">Music</a>
+      <a href="#">Artworks</a>
+      <button class="app-button">GET OUR APP</button>
+    </div>
+    <div class="column">
+      <h4>Sell on Musevo</h4>
+      <a href="#">Start Selling</a>
+      <a href="#">Pricing</a>
+      <a href="#">Challenges</a>
+    </div>
+    <div class="column">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="column">
+      <h4>Support</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+  <div class="bottom-footer">
+    <button class="newsletter-btn">SUBSCRIBE TO OUR NEWSLETTER</button>
+    <p>© 2025 Musevo. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+    <div class="social-icons">
+      <a href="#"><img src="assets/instagram.png" alt="Instagram" /></a>
+      <a href="#"><img src="assets/facebook.png" alt="Facebook" /></a>
+      <a href="#"><img src="assets/youtube.png" alt="YouTube" /></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
