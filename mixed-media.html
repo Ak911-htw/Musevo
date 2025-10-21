@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Arts | Musevo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Outfit&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background-color: #000;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: linear-gradient(to bottom, #330000, transparent);
+    }
+
+    .logo { height: 40px; }
+
+    .nav-buttons, .icon-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-buttons button, .icon-buttons button {
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .digital-section {
+      background: url('assets/mixed-media-bg.jpg') no-repeat center center/cover;
+      padding: 60px 20px 100px;
+      min-height: 100vh;
+    }
+
+    h2 {
+      font-family: 'Aboreto', cursive;
+      font-size: 28px;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .art-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 10px;
+      margin-bottom: 40px;
+    }
+
+    .art-card {
+      width: 140px;
+      background-color: rgba(20, 0, 0, 0.7);
+      border: 1px solid #330000;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .art-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .art-card:hover {
+      transform: scale(1.05);
+      background-color: rgba(80, 0, 0, 0.8);
+    }
+
+    .title { font-weight: bold; font-size: 14px; }
+    .artist { font-size: 12px; color: #ccc; }
+
+    .section-box {
+      background-color: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(120, 0, 0, 0.4);
+      padding: 30px 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      margin-top: 40px;
+    }
+
+    .search-box input {
+      width: 320px;
+      padding: 10px;
+      border-radius: 4px 0 0 4px;
+      border: 1px solid #333;
+      outline: none;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .search-box button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #660000;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      font-family: 'Aboreto', cursive;
+      cursor: pointer;
+    }
+
+    .section {
+      position: relative;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 80px 20px;
+      border-radius: 10px;
+      color: white;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .category-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px 40px;
+      margin-bottom: 30px;
+    }
+
+    .category-card {
+      width: 140px;
+      height: 180px;
+      background-color: #1a0000;
+      border: 1px solid #330000;
+      border-radius: 10px;
+      text-align: center;
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .category-card:hover {
+      transform: scale(1.05);
+      background-color: #400000;
+    }
+
+    .expand-btn {
+      margin-top: 20px;
+      background-color: #330000;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .hidden { display: none; }
+
+    .bg-visual { background: url('assets/bg-visual-artist.jpg') center/cover no-repeat; }
+    .bg-photo { background: url('assets/bg-photographer.jpg') center/cover no-repeat; }
+    .bg-fashion { background: url('assets/bg-fashion.jpg') center/cover no-repeat; }
+    .bg-calligraphy { background: url('assets/bg-calligraphy.jpg') center/cover no-repeat; }
+    .bg-music { background: url('assets/bg-musician.jpg') center/cover no-repeat; }
+
+    .footer {
+      background-color: #170000;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #bbb;
+      margin-top: 60px;
+      border-top: 1px solid #2a0000;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .column {
+      min-width: 140px;
+      text-align: left;
+    }
+
+    .column h4 {
+      font-family: 'Aboreto', cursive;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .column a {
+      display: block;
+      margin: 5px 0;
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .app-button, .newsletter-btn {
+      background-color: #660000;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .bottom-footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .social-icons img { height: 20px; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="home.html">
+    <img src="assets/logo.png" alt="Musevo Logo" class="logo"/>
+  </a>
+  <div class="nav-buttons">
+    <button onclick="location.href='explore.html'">Explore</button>
+    <button>$ Sell</button>
+    <button>♡ Wish List</button>
+    <button>🔍 Search</button>
+  </div>
+  <div class="icon-buttons">
+    <button>🔔</button>
+    <button>🛒</button>
+    <button onclick="location.href='profile.html'">👤</button>
+  </div>
+</header>
+
+<!-- DIGITAL ARTS SECTION -->
+<!-- DIGITAL ARTS PAGE CONTENT -->
+<div class="digital-section">
+    <h2>MIXED MEDIA</h2>
+    <div class="art-grid">
+      <a href="#" class="art-card"><img src="assets/sample1.png" alt="Artwork 1"><div class="title">Title</div><div class="artist">Artist</div></a>
+      <a href="#" class="art-card"><img src="assets/sample2.png" alt="Artwork 2"><div class="title">Title</div><div class="artist">Artist</div></a>
+      <a href="#" class="art-card"><img src="assets/sample3.png" alt="Artwork 3"><div class="title">Title</div><div class="artist">Artist</div></a>
+      <a href="#" class="art-card"><img src="assets/sample4.png" alt="Artwork 4"><div class="title">Title</div><div class="artist">Artist</div></a>
+      <a href="#" class="art-card"><img src="assets/sample5.png" alt="Artwork 5"><div class="title">Title</div><div class="artist">Artist</div></a>
+    </div>
+
+    <div class="section-box">
+      <h2>FEATURED</h2>
+      <div class="art-grid">
+        <a href="#" class="art-card"><img src="assets/sample6.png" alt="Featured 1"><div class="title">Title</div><div class="artist">Artist</div></a>
+        <a href="#" class="art-card"><img src="assets/sample7.png" alt="Featured 2"><div class="title">Title</div><div class="artist">Artist</div></a>
+        <a href="#" class="art-card"><img src="assets/sample8.png" alt="Featured 3"><div class="title">Title</div><div class="artist">Artist</div></a>
+      </div>
+    </div>
+
+    <div class="section-box">
+      <h2>BEST SELLER</h2>
+      <div class="art-grid">
+        <a href="#" class="art-card"><img src="assets/sample9.png" alt="Best Seller 1"><div class="title">Title</div><div class="artist">Artist</div></a>
+        <a href="#" class="art-card"><img src="assets/sample10.png" alt="Best Seller 2"><div class="title">Title</div><div class="artist">Artist</div></a>
+        <a href="#" class="art-card"><img src="assets/sample11.png" alt="Best Seller 3"><div class="title">Title</div><div class="artist">Artist</div></a>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Search for a specific Art / Artist" />
+      <button>Search</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- EXPLORE CATEGORIES -->
+<div id="explore-content"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-columns">
+    <div class="column">
+      <h4>Discover</h4>
+      <a href="#">Artists</a>
+      <a href="#">Music</a>
+      <a href="#">Artworks</a>
+      <button class="app-button">GET OUR APP</button>
+    </div>
+    <div class="column">
+      <h4>Sell on Musevo</h4>
+      <a href="#">Start Selling</a>
+      <a href="#">Pricing</a>
+      <a href="#">Challenges</a>
+    </div>
+    <div class="column">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="column">
+      <h4>Support</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+  <div class="bottom-footer">
+    <button class="newsletter-btn">SUBSCRIBE TO OUR NEWSLETTER</button>
+    <p>© 2025 Musevo. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+    <div class="social-icons">
+      <a href="#"><img src="assets/instagram.png" alt="Instagram" /></a>
+      <a href="#"><img src="assets/facebook.png" alt="Facebook" /></a>
+      <a href="#"><img src="assets/youtube.png" alt="YouTube" /></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const categories = {
+  'Visual Arts': ['Digital Art', 'Traditional Art', 'Mixed Media', '3D Art', 'Illustration', 'Concept Art', 'Comics', 'NFT Art', 'Collage Art', 'Other'],
+  'Photography / Videography': ['Portrait', 'Travel', 'Cinematic Videography', 'Music Videos', 'Street', 'Editorial/Fashion', 'Black and white', 'Landscape', 'Experimental Short Films', 'Other'],
+  'Fashion Designs': ['Street wear', 'High Fashion', 'Tech wear', 'Embroidery', 'Pattern Design', 'Traditional', 'Experimental', 'Graphic Tees', 'Sustainable Fashion', 'Other'],
+  'Calligraphy / Typography': ['Modern Script', 'Sans serif', 'Graffiti', '3D Typography', 'Brush Lettering', 'Animated Typography', 'Logo Calligraphy', 'Gothic/Blackletter', 'Other'],
+  'Music': ['Lo-fi', 'Drill', 'EDM', 'Trap', 'Pop', 'Classical', 'Synth Wave', 'House/Deep House', 'Boom Bap', 'Rock/Indie Rock', 'Bollywood/Indian pop', 'Ambient', 'Instrumental', 'Hip Hop', 'RnB/Soul', 'Rapper/Lyricist', 'Orchestral', 'Singer/Songwriter', 'Other']
+};
+
+const bgClasses = {
+  'Visual Arts': 'bg-visual',
+  'Photography / Videography': 'bg-photo',
+  'Fashion Designs': 'bg-fashion',
+  'Calligraphy / Typography': 'bg-calligraphy',
+  'Music': 'bg-music'
+};
+
+const container = document.getElementById('explore-content');
+Object.entries(categories).forEach(([sectionTitle, items]) => {
+  const section = document.createElement('section');
+  section.className = 'section ' + bgClasses[sectionTitle];
+  const heading = document.createElement('h2');
+  heading.textContent = sectionTitle;
+  section.appendChild(heading);
+  const grid = document.createElement('div');
+  grid.className = 'category-grid';
+  section.appendChild(grid);
+  const extraGrid = document.createElement('div');
+  extraGrid.className = 'category-grid hidden';
+  section.appendChild(extraGrid);
+
+  items.forEach((label, i) => {
+    const card = document.createElement('a');
+    card.className = 'category-card';
+    card.href = `${label.toLowerCase().replace(/[^a-z0-9]+/g,'-')}.html`;
+    card.innerHTML = `
+      <img src="assets/placeholder.png" alt="${label}" />
+      <span>${label}</span>
+    `;
+    (i < 5 ? grid : extraGrid).appendChild(card);
+  });
+
+  if (items.length > 5) {
+    const btn = document.createElement('button');
+    btn.className = 'expand-btn';
+    btn.textContent = '+ More';
+    btn.addEventListener('click', () => {
+      extraGrid.classList.toggle('hidden');
+      btn.textContent = extraGrid.classList.contains('hidden') ? '+ More' : '− Less';
+    });
+    section.appendChild(btn);
+  }
+
+  container.appendChild(section);
+});
+</script>
+
+</body>
+</html>
